@@ -154,7 +154,7 @@ function publishPackage(packagePath: string): Promise<PackagePublishingResult> {
       fs.readFileSync(packagePath, 'utf-8')
     );
     const directory = path.dirname(packagePath);
-    const command = `cd ${directory} && npm publish --registry=${verdaccioRegistryUrl} --no-git-tag-version --color always`;
+    const command = `cd ${directory} && npm publish --registry=${verdaccioRegistryUrl} --no-git-tag-version --tag next --color always`;
     exec(command, {}, (error, stdout, stderr) => {
       if (error) {
         reject({
