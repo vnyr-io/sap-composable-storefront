@@ -16,6 +16,8 @@ import { AsmCustomer360FeatureModule } from './features/asm/asm-customer360-feat
 import { SmartEditFeatureModule } from './features/smartedit/smart-edit-feature.module';
 import { ProductVariantsFeatureModule } from './features/product/product-variants-feature.module';
 import { ProductImageZoomFeatureModule } from './features/product/product-image-zoom-feature.module';
+import {CmsComponentsModule}from "./storefrontlib/cms-components/cms-components.module";
+import { CmsRoutingModule } from './storefrontlib/cms-routing/cms-routing.module';
 
 @NgModule({
   declarations: [],
@@ -83,7 +85,11 @@ import { ProductImageZoomFeatureModule } from './features/product/product-image-
     AsmCustomer360FeatureModule,
     SmartEditFeatureModule,
     ProductVariantsFeatureModule,
-    ProductImageZoomFeatureModule
+    ProductImageZoomFeatureModule,
+
+    //Custom
+    CmsComponentsModule,
+    CmsRoutingModule
   ],
   providers: [provideFeatureToggles({
     "showDeliveryOptionsTranslation": true,
