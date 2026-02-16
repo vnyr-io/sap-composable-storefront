@@ -1,0 +1,92 @@
+:host {
+  display: inline-block;
+  margin: 0 0.6rem;
+}
+
+.es-context-dropdown {
+  position: relative;
+}
+
+.es-context-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: transparent;
+  border: 0;
+  color: var(--cx-color-text);
+  font-weight: var(--cx-font-weight-semi, 600);
+  cursor: pointer;
+}
+
+.es-context-label {
+  opacity: 0.9;
+}
+
+.es-context-value {
+  text-align: start;
+}
+
+.es-context-caret {
+  pointer-events: none;
+}
+
+.es-context-menu {
+  min-width: 13rem;
+  margin-top: 0.4rem;
+  padding: 0.3rem;
+  border: 1px solid var(--cx-color-light);
+  border-radius: 0.5rem;
+  box-shadow: 0 10px 26px rgb(0 0 0 / 14%);
+  z-index: 20;
+}
+
+.es-context-menu li {
+  list-style: none;
+}
+
+.es-context-item {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+  font-weight: 500;
+  border-radius: 0.35rem;
+  padding: 0.45rem 0.65rem;
+}
+
+.es-context-item-code {
+  opacity: 0.8;
+  font-size: 0.875rem;
+}
+
+.es-context-item:hover {
+  background: var(--cx-color-background);
+  color: var(--cx-color-text);
+}
+
+.es-context-item.is-active {
+  font-weight: var(--cx-font-weight-semi, 600);
+  background: var(--cx-color-background);
+  color: var(--cx-color-text);
+}
+
+.es-context-toggle:focus-visible,
+.es-context-item:focus-visible {
+  outline: 2px solid var(--cx-color-primary);
+  outline-offset: 2px;
+}
+
+@media (max-width: 991px) {
+  .es-context-toggle {
+    font-size: 0.95rem;
+  }
+
+  .es-context-menu {
+    min-width: 12rem;
+  }
+}
+
+.dropdown-toggle::after {
+  display: none;
+}

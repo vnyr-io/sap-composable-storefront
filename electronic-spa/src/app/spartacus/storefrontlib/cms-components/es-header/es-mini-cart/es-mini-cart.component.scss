@@ -1,0 +1,32 @@
+.es-mini-cart {
+  margin-inline-start: 0.75rem;
+  display: block;
+
+  a {
+    display: flex;
+    background: var(--cx-color-primary);
+    min-width: 90px;
+    height: 47px;
+    padding: 10px;
+    color: var(--cx-color-inverse);
+    text-decoration: none;
+    justify-content: space-around;
+
+    &:hover {
+      color: currentColor;
+      text-decoration: none;
+    }
+
+    .count {
+      color: currentColor;
+      align-self: center;
+      padding-inline-start: 7px;
+      font-size: var(--cx-font-size, 1.188rem);
+      font-weight: var(--cx-font-weight-bold);
+    }
+
+    .total {
+      display: none;
+    }
+  }
+}

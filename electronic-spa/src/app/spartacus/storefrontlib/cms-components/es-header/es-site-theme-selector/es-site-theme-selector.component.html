@@ -1,0 +1,21 @@
+<ng-container *ngIf="items$ | async as themes">
+    <ng-container *ngIf="{ activeClass: (activeItem$ | async) } as vm">
+        <div class="dropdown es-theme-dropdown" ngbDropdown *ngIf="themes.length > 1">
+            <button type="button" class="es-theme-toggle" [id]="dropdownId" ngbDropdownToggle>
+                <span class="es-theme-label">{{ 'siteThemeSwitcher.theme' | cxTranslate }}:</span>
+                <span class="es-theme-value">{{ getActiveLabel(themes, vm.activeClass) | titlecase }}</span>
+                <cx-icon aria-hidden="true" class="small es-theme-caret" [type]="iconTypes.CARET_DOWN"></cx-icon>
+            </button>
+
+            <ul class="dropdown-menu es-theme-menu" ngbDropdownMenu [attr.aria-labelledby]="dropdownId">
+                <li *ngFor="let theme of themes; let i = index">
+                    <button type="button" ngbDropdownItem class="es-theme-item"
+                        [class.is-active]="isThemeActive(theme, vm.activeClass)" (click)="activeItem = theme.className"
+                        [attr.aria-label]="(ariaLabel$(theme, i, themes.length) | async) || null">
+                        {{ getThemeLabel(theme) | titlecase }}
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </ng-container>
+</ng-container>

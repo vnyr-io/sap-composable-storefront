@@ -1,0 +1,19 @@
+<ng-container *ngIf="items$ | async as items">
+  <div class="dropdown es-context-dropdown" ngbDropdown *ngIf="items.length > 1">
+    <button type="button" class="es-context-toggle" [id]="dropdownId" ngbDropdownToggle>
+      <span class="es-context-label">{{ label$ | async }}:</span>
+      <span class="es-context-value">{{ activeItem$ | async | uppercase }}</span>
+      <cx-icon aria-hidden="true" class="small es-context-caret" [type]="iconTypes.CARET_DOWN"></cx-icon>
+    </button>
+
+    <ul class="dropdown-menu es-context-menu" ngbDropdownMenu [attr.aria-labelledby]="dropdownId">
+      <li *ngFor="let item of items">
+        <button type="button" ngbDropdownItem class="es-context-item"
+          [class.is-active]="(activeItem$ | async) === item.isocode" (click)="active = item.isocode">
+          <span class="es-context-item-label">{{ item.label || item.name || item.isocode }}</span>
+          <span class="es-context-item-code">{{ item.isocode | uppercase }}</span>
+        </button>
+      </li>
+    </ul>
+  </div>
+</ng-container>
