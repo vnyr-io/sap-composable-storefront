@@ -65,7 +65,7 @@ export const customLayoutConfig: LayoutConfig = {
     },
 
     ProductListPageTemplate: {
-      slots: ['ProductLeftRefinements', 'ProductListSlot', 'TKCompareSection'],
+      slots: ['ProductLeftRefinements', 'ProductListSlot'],
     },
 
     ProductGridPageTemplate: {
