@@ -7,6 +7,7 @@ import { StoreModule } from "@ngrx/store";
 import { AppRoutingModule } from "@spartacus/storefront";
 import { AppComponent } from './app.component';
 import { SpartacusModule } from './spartacus/spartacus.module';
+import { EsStorefrontModule } from './spartacus/storefrontlib/cms-components/es-storefront/es-storefront.module';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { SpartacusModule } from './spartacus/spartacus.module';
     StoreModule.forRoot({}),
     AppRoutingModule,
     EffectsModule.forRoot([]),
-    SpartacusModule
+    SpartacusModule,
+    EsStorefrontModule
   ],
   providers: [provideHttpClient(withFetch(), withInterceptorsFromDi())],
   bootstrap: [AppComponent]

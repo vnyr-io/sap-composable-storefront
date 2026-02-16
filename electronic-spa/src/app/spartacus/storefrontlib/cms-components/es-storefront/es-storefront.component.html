@@ -1,0 +1,17 @@
+<ng-template [cxOutlet]="StorefrontOutlets.STOREFRONT" cxPageTemplateStyle>
+  <ng-template cxOutlet="cx-header">
+    <header id="cx-header">
+      <app-es-header></app-es-header>
+    </header>
+  </ng-template>
+
+  <main cxSkipLink="cx-main" [cxFocus]="{ disableMouseFocus: true }">
+    <router-outlet></router-outlet>
+  </main>
+
+  <ng-template cxOutlet="cx-footer">
+    <footer id="cx-footer">
+      <app-es-footer></app-es-footer>
+    </footer>
+  </ng-template>
+</ng-template>
