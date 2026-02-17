@@ -5,6 +5,7 @@ import { EsHeaderModule } from './es-header/es-header.module';
 import { EsFooterModule } from './es-footer/es-footer.module';
 import { EsBannerModule } from './es-banner/es-banner.module';
 import { EsCarouselModule } from './es-carousel/es-carousel.module';
+import { EsBottomHeaderModule } from './es-bottom-header/es-bottom-header.module';
 
 @NgModule({
   declarations: [],
@@ -15,6 +16,7 @@ import { EsCarouselModule } from './es-carousel/es-carousel.module';
     EsNavigationModule,
     EsBannerModule,
     EsCarouselModule,
+    EsBottomHeaderModule,
   ],
 })
 export class CmsComponentsModule {}
