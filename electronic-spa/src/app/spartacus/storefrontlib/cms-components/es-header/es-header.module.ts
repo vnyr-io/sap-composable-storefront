@@ -28,6 +28,7 @@ import { EsMiniCartComponent } from './es-mini-cart/es-mini-cart.component';
 import { EsSearchBoxComponent } from './es-search-box/es-search-box.component';
 import { EsLogoComponent } from './es-logo/es-logo.component';
 import { EsLinksComponent } from './es-links/es-links.component';
+import { EsHamburgerMenuComponent } from './es-hamburger-menu/es-hamburger-menu.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { EsLinksComponent } from './es-links/es-links.component';
     EsSearchBoxComponent,
     EsLogoComponent,
     EsLinksComponent,
+    EsHamburgerMenuComponent,
   ],
   imports: [
     CommonModule,
@@ -62,6 +64,7 @@ import { EsLinksComponent } from './es-links/es-links.component';
       cmsComponents: {
         SimpleBannerComponent: { component: EsLogoComponent },
         LoginComponent: { component: EsLoginComponent },
+        HamburgerMenuComponent: { component: EsHamburgerMenuComponent },
         MiniCartComponent: { component: EsMiniCartComponent },
         SearchBoxComponent: { component: EsSearchBoxComponent },
         CMSLinkComponent: { component: EsLinksComponent },
@@ -86,6 +89,7 @@ import { EsLinksComponent } from './es-links/es-links.component';
     EsSearchBoxComponent,
     EsLogoComponent,
     EsLinksComponent,
+    EsHamburgerMenuComponent,
   ],
 })
 export class EsHeaderModule {}

@@ -1,4 +1,5 @@
-﻿import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import {
   KeyboardFocusModule,
@@ -12,6 +13,7 @@ import { EsFooterModule } from '../es-footer/es-footer.module';
 @NgModule({
   declarations: [EsStorefrontComponent],
   imports: [
+    CommonModule,
     RouterModule,
     OutletModule,
     KeyboardFocusModule,

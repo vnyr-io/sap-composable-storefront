@@ -1,7 +1,14 @@
 <ng-template [cxOutlet]="StorefrontOutlets.STOREFRONT" cxPageTemplateStyle>
   <ng-template cxOutlet="cx-header">
-    <header id="cx-header">
-      <app-es-header></app-es-header>
+    <header
+      id="cx-header"
+      cxSkipLink="cx-header"
+      [cxFocus]="focusConfig"
+      [class.is-expanded]="isExpanded$ | async"
+      (keydown.escape)="collapseMenu()"
+      (click)="collapseMenuIfClickOutside($event)"
+    >
+      <app-es-header [cxSkipFocus]="skipFocusConfig"></app-es-header>
     </header>
   </ng-template>
 
@@ -10,7 +17,11 @@
   </main>
 
   <ng-template cxOutlet="cx-footer">
-    <footer id="cx-footer">
+    <footer
+      id="cx-footer"
+      cxSkipLink="cx-footer"
+      [cxFocus]="{ disableMouseFocus: true }"
+    >
       <app-es-footer></app-es-footer>
     </footer>
   </ng-template>

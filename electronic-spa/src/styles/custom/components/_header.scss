@@ -1,5 +1,10 @@
-header .SiteContext {
-  @media (min-width: 992px) {
-    align-items: center;
+@media (min-width: 992px) {
+  header {
+    button.hamburger.cx-hamburger {
+      display: none;
+    }
+    .SiteContext {
+      align-items: center;
+    }
   }
 }
