@@ -44,6 +44,8 @@
               }
             ],
             "styles": [
+              "node_modules/slick-carousel/slick/slick.css",
+              "node_modules/slick-carousel/slick/slick-theme.css",
               "src/styles.scss",
               "src/styles/spartacus/user.scss",
               "src/styles/spartacus/cart.scss",
@@ -53,7 +55,10 @@
               "src/styles/spartacus/asm.scss",
               "src/styles/spartacus/product.scss"
             ],
-            "scripts": [],
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/slick-carousel/slick/slick.min.js"
+            ],
             "stylePreprocessorOptions": {
               "includePaths": [
                 "node_modules/"
@@ -125,6 +130,8 @@
               }
             ],
             "styles": [
+              "node_modules/slick-carousel/slick/slick.css",
+              "node_modules/slick-carousel/slick/slick-theme.css",
               "src/styles.scss",
               "src/styles/spartacus/user.scss",
               "src/styles/spartacus/cart.scss",
@@ -134,7 +141,10 @@
               "src/styles/spartacus/asm.scss",
               "src/styles/spartacus/product.scss"
             ],
-            "scripts": [],
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/slick-carousel/slick/slick.min.js"
+            ],
             "stylePreprocessorOptions": {
               "includePaths": [
                 "node_modules/"

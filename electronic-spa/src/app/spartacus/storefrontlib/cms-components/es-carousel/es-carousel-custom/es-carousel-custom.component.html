@@ -1,0 +1,13 @@
+<h3 class="es-carousel-custom__title" *ngIf="title$ | async as title">
+  {{ title }}
+</h3>
+
+<ngx-slick-carousel class="es-carousel-custom" *ngIf="slickItems$ | async as items" [config]="slideConfig">
+  <div ngxSlickItem class="es-carousel-custom__slide" *ngFor="let item of items">
+    <cx-product-carousel-item [item]="item"></cx-product-carousel-item>
+  </div>
+</ngx-slick-carousel>
+
+<div class="es-carousel-custom__empty" *ngIf="(items$ | async)?.length === 0">
+  No products available
+</div>
