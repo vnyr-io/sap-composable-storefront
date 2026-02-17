@@ -26,21 +26,6 @@ app-es-pagination {
   @extend %cx-pagination;
 }
 
-app-es-product-list {
-  .es-sorting-view-row {
-    align-items: center;
-    row-gap: 0.75rem;
-  }
-
-  .es-product-view-col {
-    display: flex;
-    align-items: center;
-    margin-inline-start: 0.75rem;
-  }
-
-  @media (max-width: 991.98px) {
-    .es-product-view-col {
-      margin-inline-start: 0;
-    }
-  }
+app-es-star-rating {
+  @extend %cx-star-rating;
 }

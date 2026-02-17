@@ -6,9 +6,9 @@ import {
   MediaModule,
   OutletModule,
   PageComponentModule,
-  StarRatingModule,
 } from '@spartacus/storefront';
 import { EsProductListItemComponent } from './es-product-list-item.component';
+import { EsStarRatingModule } from '../es-star-rating/es-star-rating.module';
 
 @NgModule({
   declarations: [EsProductListItemComponent],
@@ -18,7 +18,7 @@ import { EsProductListItemComponent } from './es-product-list-item.component';
     I18nModule,
     UrlModule,
     MediaModule,
-    StarRatingModule,
+    EsStarRatingModule,
     OutletModule,
     PageComponentModule,
   ],
