@@ -1,0 +1,51 @@
+<div class="cx-page" *ngIf="model$ | async as model">
+  <section tabindex="-1" class="cx-page-section" [attr.aria-label]="'productList.productListResults' | cxTranslate">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 col-lg-12" *ngIf="viewMode$ | async as viewMode">
+          <div class="cx-sorting top">
+            <div class="row es-sorting-view-row">
+              <div class="col-auto mr-auto es-product-view-col">
+                <app-es-product-view (modeChange)="setViewMode($event)" [mode]="viewMode"></app-es-product-view>
+              </div>
+              <app-es-sorting [sortOptions]="model.sorts" (sortListEvent)="sortList($event)"
+                [selectedOption]="model.pagination?.sort" [ariaLabel]="'productList.sortResults' | cxTranslate"
+                ariaControls="product-results-list" [placeholder]="'productList.sortBy' | cxTranslate"></app-es-sorting>
+            </div>
+          </div>
+          <div id="product-results-list" class="cx-product-container">
+            <ng-container *ngIf="!isInfiniteScroll; else infiniteScroll">
+              <ng-container *ngIf="viewMode === ViewModes.Grid">
+                <div class="row">
+                  <app-es-product-grid-item *ngFor="let product of model?.products" [product]="product"
+                    class="col-12 col-sm-6 col-md-4"></app-es-product-grid-item>
+                </div>
+              </ng-container>
+
+              <ng-container *ngIf="viewMode === ViewModes.List">
+                <app-es-product-list-item *ngFor="let product of model?.products" [product]="product"
+                  class="cx-product-search-list"></app-es-product-list-item>
+              </ng-container>
+            </ng-container>
+
+            <ng-template #infiniteScroll>
+              <app-es-product-scroll [scrollConfig]="scrollConfig" [model]="model"
+                [inputViewMode]="viewMode"></app-es-product-scroll>
+            </ng-template>
+          </div>
+
+          <div *ngIf="!isInfiniteScroll" class="row">
+            <div class="col-12 d-flex justify-content-center">
+              <div class="cx-pagination" [attr.aria-label]="
+                      'productList.productSearchPagination' | cxTranslate
+                    ">
+                <app-es-pagination [pagination]="model.pagination" queryParam="currentPage" [defaultPage]="0"
+                  paginationID="pagination-top"></app-es-pagination>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
