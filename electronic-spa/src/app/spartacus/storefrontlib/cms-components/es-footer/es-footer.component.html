@@ -1,1 +1,38 @@
-<cx-page-layout section="footer"></cx-page-layout>
+<section class="es-footer" aria-label="Site footer">
+  <div class="es-footer__inner">
+    <div class="es-footer__top">
+      <div class="es-footer__brand">
+        <a class="es-footer__logo" href="/" aria-label="Electronic Store Home">
+          <span>Electronic</span> Store
+        </a>
+        <p>Tech essentials curated for speed, quality, and everyday value.</p>
+      </div>
+
+      <div class="es-footer__sections">
+        <div class="es-footer__section" *ngFor="let section of sections">
+          <h3>{{ section.title }}</h3>
+          <ul>
+            <li *ngFor="let link of section.links">
+              <a [href]="link.href">{{ link.label }}</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="es-footer__middle">
+      <a href="tel:+1-800-123-4567">+1 (800) 123-4567</a>
+      <a href="mailto:support@electronicstore.com">support&#64;electronicstore.com</a>
+      <span>Mon-Fri, 9:00 AM-6:00 PM</span>
+    </div>
+
+    <div class="es-footer__bottom">
+      <span>Copyright {{ year }} Electronic Store. All rights reserved.</span>
+      <div class="es-footer__legal">
+        <a href="/privacy-policy">Privacy</a>
+        <a href="/terms-and-conditions">Terms</a>
+        <a href="/cookie-policy">Cookies</a>
+      </div>
+    </div>
+  </div>
+</section>
