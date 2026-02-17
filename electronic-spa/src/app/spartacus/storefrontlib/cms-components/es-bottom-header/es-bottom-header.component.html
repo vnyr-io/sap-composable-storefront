@@ -1,7 +1,7 @@
 <nav [attr.aria-label]="'common.breadcrumbs' | cxTranslate" tabindex="-1">
-    <ol [attr.aria-label]="'common.breadcrumbs' | cxTranslate">
-        <li *ngFor="let crumb of crumbs$ | async as crumbList; let i = index; let last = last">
-            <a [routerLink]="crumb.link" [innerHTML]="crumb.label" [attr.aria-label]="
+  <ol [attr.aria-label]="'common.breadcrumbs' | cxTranslate">
+    <li *ngFor="let crumb of crumbs$ | async as crumbList; let i = index; let last = last">
+      <a [routerLink]="crumb.link" [innerHTML]="crumb.label" [attr.aria-label]="
           last
             ? ('common.breadcrumbsCurrentPage' | cxTranslate) +
               ' ' +
@@ -14,8 +14,8 @@
               ('common.of' | cxTranslate) +
               crumbList.length
         "></a>
-        </li>
-    </ol>
+    </li>
+  </ol>
 </nav>
 
-<h1>{{ title$ | async }}</h1>
+<!-- <h1>{{ title$ | async }}</h1> -->

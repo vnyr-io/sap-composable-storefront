@@ -4,17 +4,9 @@ import { CmsConfig, I18nModule, provideConfig } from '@spartacus/core';
 import { RouterModule } from '@angular/router';
 import { EsBottomHeaderComponent } from './es-bottom-header.component';
 
-
-
 @NgModule({
-  declarations: [
-    EsBottomHeaderComponent
-  ],
-  imports: [
-    CommonModule,
-    RouterModule,
-    I18nModule,
-  ],
+  declarations: [EsBottomHeaderComponent],
+  imports: [CommonModule, RouterModule, I18nModule],
   providers: [
     provideConfig(<CmsConfig>{
       cmsComponents: {
@@ -24,8 +16,6 @@ import { EsBottomHeaderComponent } from './es-bottom-header.component';
       },
     }),
   ],
-  exports: [
-    EsBottomHeaderComponent
-  ]
+  exports: [EsBottomHeaderComponent],
 })
-export class EsBottomHeaderModule { }
+export class EsBottomHeaderModule {}
