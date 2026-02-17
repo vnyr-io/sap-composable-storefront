@@ -1,0 +1,87 @@
+:host {
+  display: inline-block;
+  margin: 0 0.6rem;
+}
+
+.es-theme-dropdown {
+  position: relative;
+}
+
+.es-theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: transparent;
+  border: 0;
+  color: var(--cx-color-text);
+  font-weight: var(--cx-font-weight-semi, 600);
+  cursor: pointer;
+}
+
+.es-theme-label {
+  opacity: 0.9;
+}
+
+.es-theme-value {
+  text-align: start;
+}
+
+.es-theme-caret {
+  pointer-events: none;
+}
+
+.es-theme-menu {
+  min-width: 13rem;
+  margin-top: 0.4rem;
+  padding: 0.3rem;
+  border: 1px solid var(--cx-color-light);
+  border-radius: 0.5rem;
+  box-shadow: 0 10px 26px rgb(0 0 0 / 14%);
+  z-index: 20;
+}
+
+.es-theme-menu li {
+  list-style: none;
+}
+
+.es-theme-item {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+  font-weight: 500;
+  border-radius: 0.35rem;
+  padding: 0.45rem 0.65rem;
+}
+
+.es-theme-item:hover {
+  background: var(--cx-color-background);
+  color: var(--cx-color-text);
+}
+
+.es-theme-item.is-active {
+  font-weight: var(--cx-font-weight-semi, 600);
+  background: var(--cx-color-background);
+  color: var(--cx-color-text);
+}
+
+.es-theme-toggle:focus-visible,
+.es-theme-item:focus-visible {
+  outline: 2px solid var(--cx-color-primary);
+  outline-offset: 2px;
+}
+
+@media (max-width: 991px) {
+  .es-theme-toggle {
+    font-size: 0.95rem;
+  }
+
+  .es-theme-menu {
+    min-width: 12rem;
+  }
+}
+
+.dropdown-toggle::after {
+  display: none;
+}

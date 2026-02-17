@@ -1,0 +1,60 @@
+<!-- <cx-searchbox></cx-searchbox> -->
+
+<div role="search" [attr.aria-label]="'searchBox.productSearch' | cxTranslate">
+    <label class="searchbox" [class.dirty]="!!searchInput.value">
+        <input #searchInput [placeholder]="'searchBox.placeholder' | cxTranslate" autocomplete="off"
+            [attr.aria-label]="'searchBox.placeholder' | cxTranslate" (click)="open()"
+            (input)="search(searchInput.value)"
+            (keydown.enter)="close(true); launchSearchResult(searchInput.value); updateChosenWord(searchInput.value)"
+            (keydown.escape)="close()" value="{{ chosenWord }}" />
+
+        <button [attr.aria-label]="'common.reset' | cxTranslate" [title]="'common.reset' | cxTranslate"
+            (click)="clear(searchInput)" class="reset" type="button">
+            <cx-icon [type]="iconTypes.RESET"></cx-icon>
+        </button>
+
+        <button [attr.aria-label]="'common.search' | cxTranslate" [title]="'common.search' | cxTranslate" class="search"
+            (click)="open()" type="button">
+            <cx-icon [type]="iconTypes.SEARCH"></cx-icon>
+        </button>
+    </label>
+</div>
+
+<ng-container *ngIf="results$ | async as result">
+    <div *ngIf="searchBoxActive && (searchInputEl?.nativeElement?.value ?? '').trim().length > 0 && ((result.suggestions?.length ?? 0) > 0 || (result.products?.length ?? 0) > 0 || !!result.message)"
+        class="results">
+        <div class="results-header">
+            <h3>{{ 'searchBox.suggestions' | cxTranslate }}</h3>
+            <h3>{{ 'searchBox.products' | cxTranslate }}</h3>
+            <button type="button" class="close-btn" (click)="closePanel()">
+                {{ 'searchBox.closeSearchPanel' | cxTranslate }}
+            </button>
+        </div>
+
+        <div class="results-body">
+            <div class="suggestions" *ngIf="result.suggestions?.length">
+                <ul role="listbox">
+                    <li *ngFor="let suggestion of result.suggestions" role="option">
+                        <a [routerLink]="{ cxRoute: 'search', params: { query: suggestion } } | cxUrl"
+                            (click)="updateChosenWord(suggestion); closePanel()">
+                            {{ suggestion }}
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="products" *ngIf="result.products?.length">
+                <ul role="listbox">
+                    <li *ngFor="let product of (result.products | slice:0:5)" role="option">
+                        <a [routerLink]="{ cxRoute: 'product', params: product } | cxUrl" (click)="closePanel()">
+                            <img [src]="$any(product.images)?.PRIMARY?.thumbnail?.url || $any(product.images)?.PRIMARY?.product?.url || $any(product.images)?.PRIMARY?.zoom?.url || ''"
+                                [alt]="product.name || 'product'" />
+                            <span class="name" [innerHTML]="product.nameHtml || product.name"></span>
+                            <span class="price">{{ product.price?.formattedValue }}</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</ng-container>

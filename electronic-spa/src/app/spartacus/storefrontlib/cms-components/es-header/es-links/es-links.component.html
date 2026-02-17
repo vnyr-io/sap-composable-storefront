@@ -1,0 +1,11 @@
+<ng-container *ngIf="data$ | async as data">
+  <a
+    class="es-link"
+    [attr.href]="data.url ?? ''"
+    [attr.style]="data.styleAttributes || null"
+    [attr.target]="getTarget(data)"
+    [attr.rel]="getTarget(data) === '_blank' ? 'noopener noreferrer' : null"
+  >
+    {{ data.linkName }}
+  </a>
+</ng-container>

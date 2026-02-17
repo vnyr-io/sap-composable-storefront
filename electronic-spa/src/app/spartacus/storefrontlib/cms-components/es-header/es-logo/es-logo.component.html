@@ -1,0 +1,5 @@
+<ng-container *ngIf="data$ | async as data">
+    <a class="es-logo" role="link" [routerLink]="data.urlLink">
+        <img [src]="(config.backend?.media?.baseUrl || '') + ($any(data.media)?.url || '')" />
+    </a>
+</ng-container>
