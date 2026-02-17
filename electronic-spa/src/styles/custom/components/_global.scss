@@ -1,0 +1,7 @@
+:root {
+  --cx-page-width-max: 100%;
+}
+
+cx-page-layout {
+  max-width: var(--cx-page-width-max);
+}

@@ -1,0 +1,9 @@
+:host {
+  min-width: 0;
+}
+
+@media (min-width: 992px) {
+  :host button.dialog-trigger {
+    display: none;
+  }
+}
