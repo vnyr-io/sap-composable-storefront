@@ -1,0 +1,81 @@
+.es-carousel-custom__title {
+  margin: 0 0 1rem;
+  font-size: 1.375rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+.es-carousel-custom {
+  display: block;
+  margin: 0 -0.5rem;
+  min-height: 24rem;
+}
+
+.es-carousel-custom__slide {
+  padding: 0 0.5rem;
+  box-sizing: border-box;
+}
+
+.es-carousel-custom__empty {
+  padding: 1rem 0.5rem;
+  color: #666;
+  font-size: 0.95rem;
+}
+
+:host ::ng-deep .es-carousel-custom .slick-list {
+  padding: 0.25rem 0 0.75rem;
+}
+
+:host ::ng-deep .es-carousel-custom .slick-track {
+  margin-left: 0;
+}
+
+:host ::ng-deep .es-carousel-custom .slick-slide > div {
+  height: 100%;
+}
+
+:host ::ng-deep .es-carousel-custom .slick-prev,
+:host ::ng-deep .es-carousel-custom .slick-next {
+  z-index: 2;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background: #fff;
+  border: 1px solid #d9d9d9;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+}
+
+:host ::ng-deep .es-carousel-custom .slick-prev {
+  left: -0.75rem;
+}
+
+:host ::ng-deep .es-carousel-custom .slick-next {
+  right: -0.75rem;
+}
+
+:host ::ng-deep .es-carousel-custom .slick-prev:hover,
+:host ::ng-deep .es-carousel-custom .slick-next:hover {
+  background: #f7f7f7;
+}
+
+:host ::ng-deep .es-carousel-custom .slick-prev:before,
+:host ::ng-deep .es-carousel-custom .slick-next:before {
+  color: #1f1f1f;
+  font-size: 1.1rem;
+  opacity: 1;
+}
+
+:host ::ng-deep .es-carousel-custom .slick-dots {
+  bottom: -1.8rem;
+}
+
+:host ::ng-deep .es-carousel-custom .slick-dots li button:before {
+  color: #7a7a7a;
+  font-size: 0.6rem;
+  opacity: 0.8;
+}
+
+:host ::ng-deep .es-carousel-custom .slick-dots li.slick-active button:before {
+  color: #222;
+  opacity: 1;
+}
