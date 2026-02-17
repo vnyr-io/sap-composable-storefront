@@ -1,0 +1,18 @@
+<ng-container *ngIf="data$ | async as data">
+  <a class="es-banner-simple-responsive" [cxGenericLink]="data.urlLink">
+    <img
+      class="es-banner-simple-responsive__image"
+      [src]="getMediaUrl($any(data.media))"
+      [alt]="data.headline || 'Responsive banner'"
+      loading="lazy"
+    />
+    <div
+      class="es-banner-simple-responsive__content"
+      *ngIf="data.headline || data.content"
+    >
+      <h3 *ngIf="data.headline" [innerHTML]="data.headline"></h3>
+      <div *ngIf="data.content" [innerHTML]="data.content"></div>
+    </div>
+  </a>
+</ng-container>
+

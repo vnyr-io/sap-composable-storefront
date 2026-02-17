@@ -1,0 +1,11 @@
+<ng-container *ngIf="data$ | async as data">
+  <a class="es-banner-simple" [cxGenericLink]="data.urlLink">
+    <img
+      class="es-banner-simple__image"
+      [src]="getMediaUrl($any(data.media))"
+      [alt]="data.headline || 'Simple banner'"
+      loading="lazy"
+    />
+  </a>
+</ng-container>
+
