@@ -1,0 +1,73 @@
+<ng-container *ngIf="product$ | async as product">
+
+  <div class="title" *ngIf="product?.name">
+    <h1>{{ product?.name }}</h1>
+  </div>
+
+  <!-- <div class="brand" *ngIf="product?.manufacturer">
+    Brand: {{ product?.manufacturer }}
+  </div>
+
+  <div class="categories" *ngIf="product?.categories?.length">
+    <span *ngFor="let category of product?.categories">
+      {{ category?.name }}
+    </span>
+  </div> -->
+
+  <!-- <div class="promotions" *ngIf="product?.potentialPromotions?.length">
+    <div *ngFor="let promo of product?.potentialPromotions">
+      {{ promo?.description }}
+    </div>
+  </div> -->
+
+  <!-- <div class="price">
+    <span *ngIf="product?.price?.formattedValue">
+      {{ product?.price?.formattedValue }}
+    </span>
+
+    <span *ngIf="product?.price?.discount">
+      ({{ product?.price?.discount?.formattedValue }} off)
+    </span>
+  </div> -->
+
+  <div class="rating" *ngIf="product?.averageRating">
+    <app-es-star-rating [rating]="product?.averageRating ?? 0"></app-es-star-rating>
+
+    <div class="count">({{ product?.numberOfReviews }})</div>
+
+    <ng-container *cxFeature="'a11yLinkBtnsToTertiaryBtns'">
+      <button *ngIf="product?.averageRating" class="btn btn-tertiary" (click)="showReviews()" [attr.aria-label]="
+          'productSummary.showReviewsDetailed'
+            | cxTranslate
+              : {
+                  rating: product?.averageRating | number: '1.0-1',
+                  count: product?.numberOfReviews,
+                }
+        ">
+        {{ 'productSummary.showReviews' | cxTranslate }}
+      </button>
+    </ng-container>
+
+    <ng-container *cxFeature="'!a11yLinkBtnsToTertiaryBtns'">
+      <button *ngIf="areReviewsAvailable$ | async" class="btn btn-link cx-action-link" (click)="showReviews()"
+        [attr.aria-label]="
+          'productSummary.showReviewsDetailed'
+            | cxTranslate
+              : {
+                  rating: product?.averageRating | number: '1.0-1',
+                  count: product?.numberOfReviews,
+                }
+        ">
+        {{ 'productSummary.showReviews' | cxTranslate }}
+      </button>
+    </ng-container>
+  </div>
+
+  <div class="rating" *ngIf="!product?.averageRating">
+    {{ 'productDetails.noReviews' | cxTranslate }}
+  </div>
+
+  <div class="code">
+    {{ 'productSummary.id' | cxTranslate }} {{ product?.code }}
+  </div>
+</ng-container>

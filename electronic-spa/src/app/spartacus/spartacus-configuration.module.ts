@@ -27,6 +27,12 @@ import {
         occ: {
           baseUrl: environment.occBaseUrl,
           prefix: '/occ/v2/',
+          endpoints: {
+            product: {
+              variants:
+                'products/${productCode}?fields=baseOptions,baseProduct,variantOptions,variantType',
+            },
+          },
         },
         media: {
           baseUrl: environment.occBaseUrl,

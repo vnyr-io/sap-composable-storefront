@@ -1,0 +1,10 @@
+<div class="cx-promotions" *ngIf="promotions?.length">
+  <ng-container *ngIf="promotions?.length === 1; else promotionsList">
+    <p>{{ promotions?.[0]?.description }}</p>
+  </ng-container>
+  <ng-template #promotionsList>
+    <ul>
+      <li *ngFor="let promotion of promotions">{{ promotion?.description }}</li>
+    </ul>
+  </ng-template>
+</div>
