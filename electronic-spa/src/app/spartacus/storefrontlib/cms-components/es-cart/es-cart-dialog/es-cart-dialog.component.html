@@ -1,0 +1,75 @@
+<div class="cx-modal-container" role="dialog" [cxFocus]="focusConfig" (esc)="dismissModal('Escape pressed')"
+  aria-labelledby="dialogTitle">
+  <div class="cx-modal-content">
+    <div aria-live="polite" aria-atomic="true" class="cx-dialog-header modal-header">
+      <div id="dialogTitle" class="cx-dialog-title modal-title">
+        {{
+        (loaded$ | async)
+        ? (addedEntryWasMerged$ | async)
+        ? ('addToCart.itemsIncrementedInYourCart' | cxTranslate)
+        : ('addToCart.itemsAddedToYourCart' | cxTranslate)
+        : ('addToCart.updatingCart' | cxTranslate)
+        }}
+      </div>
+      <button type="button" class="close" title="{{ 'common.close' | cxTranslate }}"
+        [attr.aria-label]="'addToCart.closeModal' | cxTranslate" (click)="dismissModal('Cross click')">
+        <span aria-hidden="true">
+          <cx-icon [type]="iconTypes.CLOSE"></cx-icon>
+        </span>
+      </button>
+    </div>
+
+    <ng-container *ngIf="loaded$ | async; else loading">
+      <div class="cx-dialog-body modal-body" *ngIf="entry$ | async as entry">
+        <div class="cx-dialog-row">
+          <div class="cx-dialog-item col-sm-12 col-md-6">
+            <app-es-cart-item [item]="entry" [compact]="true" [quantityControl]="getQuantityControl() | async"
+              [promotionLocation]="promotionLocation"></app-es-cart-item>
+            <div class="cx-dialog-pickup-store" *ngIf="pickupStoreName">
+              {{ 'pickupOptionDialog.modalHeader' | cxTranslate }}:
+              <span class="cx-dialog-pickup-store-name">{{ pickupStoreName }}</span>
+            </div>
+          </div>
+
+          <div class="cx-dialog-separator col-sm-12 d-xs-block d-sm-block d-md-none"></div>
+
+          <div class="cx-dialog-actions col-sm-12 col-md-6" *ngIf="cart$ | async as cart">
+            <div class="cx-dialog-total">
+              <div>
+                {{ 'cartItems.cartTotal' | cxTranslate: { count: cart.totalUnitCount } }}
+              </div>
+              <div>{{ cart.subTotal?.formattedValue }}</div>
+            </div>
+
+            <div class="cx-dialog-promotions">
+              <app-es-promotions [promotions]="
+                  (cart.appliedOrderPromotions || []).concat(
+                    cart.potentialOrderPromotions || []
+                  )
+                "></app-es-promotions>
+            </div>
+
+            <div class="cx-dialog-buttons">
+              <button [class.disabled]="form.dirty" (click)="onAction('viewCart')" class="btn btn-primary" autofocus>
+                {{ 'addToCart.viewCart' | cxTranslate }}
+              </button>
+              <button [class.disabled]="form.dirty" (click)="onAction('checkout')" class="btn btn-secondary">
+                {{ 'addToCart.proceedToCheckout' | cxTranslate }}
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+
+    <ng-template #loading>
+      <div class="cx-dialog-body modal-body">
+        <div class="cx-dialog-row">
+          <div class="col-sm-12">
+            <cx-spinner aria-hidden="true"></cx-spinner>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </div>
+</div>

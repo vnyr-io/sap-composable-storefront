@@ -1,0 +1,19 @@
+import { Injectable } from '@angular/core';
+import { UntypedFormControl } from '@angular/forms';
+import {
+  CartItemComponentOptions,
+  CartItemContext,
+  OrderEntry,
+  PromotionLocation,
+} from '@spartacus/cart/base/root';
+import { ReplaySubject } from 'rxjs';
+
+@Injectable()
+export class EsCartItemContextSource implements CartItemContext {
+  readonly compact$ = new ReplaySubject<boolean>(1);
+  readonly readonly$ = new ReplaySubject<boolean>(1);
+  readonly item$ = new ReplaySubject<OrderEntry>(1);
+  readonly quantityControl$ = new ReplaySubject<UntypedFormControl>(1);
+  readonly location$ = new ReplaySubject<PromotionLocation>(1);
+  readonly options$ = new ReplaySubject<CartItemComponentOptions>(1);
+}

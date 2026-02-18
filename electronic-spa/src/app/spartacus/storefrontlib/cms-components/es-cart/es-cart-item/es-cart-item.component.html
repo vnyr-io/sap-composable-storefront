@@ -1,0 +1,98 @@
+<ng-template [cxOutlet]="CartOutlets.ITEM">
+  <ng-template [cxOutlet]="CartOutlets.ITEM_CONFIGURATOR_ISSUES"></ng-template>
+  <app-es-cart-item-validation-warning
+    [code]="item?.product?.code"
+  ></app-es-cart-item-validation-warning>
+  <ng-container *ngIf="compact; else fullItem">
+    <div class="cx-compact row">
+      <div class="col-2 cx-image-container">
+        <a [routerLink]="{ cxRoute: 'product', params: item?.product } | cxUrl">
+          <cx-media
+            [container]="item?.product?.images?.PRIMARY"
+            format="cartIcon"
+          ></cx-media>
+        </a>
+      </div>
+      <div class="cx-info col-10">
+        <div class="cx-name" *ngIf="item?.product?.name">
+          <a
+            class="cx-link"
+            [routerLink]="{ cxRoute: 'product', params: item?.product } | cxUrl"
+            >{{ item?.product?.name }}</a
+          >
+        </div>
+        <div *ngIf="item?.product?.code" class="cx-code">
+          {{ 'cartItems.id' | cxTranslate }} {{ item?.product?.code }}
+        </div>
+        <div class="cx-compact-row" *ngIf="item?.quantity !== undefined">
+          {{ 'cartItems.quantity' | cxTranslate }}: {{ item?.quantity }}
+        </div>
+        <div class="cx-compact-row" *ngIf="item?.totalPrice?.formattedValue">
+          {{ item?.totalPrice?.formattedValue }}
+        </div>
+      </div>
+    </div>
+  </ng-container>
+
+  <ng-template #fullItem>
+    <div class="row">
+      <div class="col-2 cx-image-container">
+        <a [routerLink]="{ cxRoute: 'product', params: item?.product } | cxUrl">
+          <cx-media
+            [container]="item?.product?.images?.PRIMARY"
+            format="cartIcon"
+          ></cx-media>
+        </a>
+      </div>
+      <div class="cx-info col-10">
+        <div class="cx-info-container row">
+          <div class="col-md-3 col-lg-3 col-xl-5">
+            <div *ngIf="item?.product?.name" class="cx-name">
+              <a
+                class="cx-link"
+                [routerLink]="{ cxRoute: 'product', params: item?.product } | cxUrl"
+              >
+                <h3>{{ item?.product?.name }}</h3>
+              </a>
+            </div>
+            <div *ngIf="item?.product?.code" class="cx-code">
+              {{ 'cartItems.id' | cxTranslate }} {{ item?.product?.code }}
+            </div>
+
+            <ng-template [cxOutlet]="CartOutlets.ITEM_DETAILS"></ng-template>
+          </div>
+
+          <div *ngIf="item?.basePrice" class="cx-price col-md-3 col-lg-3 col-xl-2">
+            <div class="cx-label d-block d-md-none d-lg-none d-xl-none">
+              {{ 'cartItems.itemPrice' | cxTranslate }}
+            </div>
+            <div class="cx-value">{{ item?.basePrice?.formattedValue }}</div>
+          </div>
+
+          <div class="cx-quantity col-3">
+            <div class="cx-label d-block d-md-none d-lg-none d-xl-none">
+              {{ 'cartItems.quantity' | cxTranslate }}
+            </div>
+            <div class="cx-value" [class.readonly-value]="readonly">
+              <cx-item-counter
+                [control]="quantityControl"
+                [readonly]="!item?.updateable || readonly || options?.isSaveForLater"
+                [max]="item?.product?.stock?.stockLevel"
+                [allowZero]="true"
+              ></cx-item-counter>
+            </div>
+          </div>
+
+          <div *ngIf="item?.totalPrice" class="cx-total col-md-3 col-xl-2">
+            <div class="cx-label d-block d-md-none d-lg-none d-xl-none">
+              {{ 'cartItems.total' | cxTranslate }}
+            </div>
+            <div class="cx-value">{{ item?.totalPrice?.formattedValue }}</div>
+          </div>
+        </div>
+
+        <app-es-promotions [promotions]="item?.promotions"></app-es-promotions>
+      </div>
+    </div>
+  </ng-template>
+</ng-template>

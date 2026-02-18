@@ -7,6 +7,9 @@ import { EsBannerModule } from './es-banner/es-banner.module';
 import { EsCarouselModule } from './es-carousel/es-carousel.module';
 import { EsBottomHeaderModule } from './es-bottom-header/es-bottom-header.module';
 import { EsProductListingModule } from './es-product-listing/es-product-listing.module';
+import { EsProductDetailsModule } from './es-product-details/es-product-details.module';
+import { EsDialogModule } from './es-dialog/es-dialog.module';
+import { EsCartModule } from './es-cart/es-cart.module';
 
 @NgModule({
   declarations: [],
@@ -19,6 +22,9 @@ import { EsProductListingModule } from './es-product-listing/es-product-listing.
     EsCarouselModule,
     EsBottomHeaderModule,
     EsProductListingModule,
+    EsProductDetailsModule,
+    EsDialogModule,
+    EsCartModule,
   ],
 })
 export class CmsComponentsModule {}

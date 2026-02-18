@@ -1,0 +1,32 @@
+<div class="cx-modal-container" role="dialog" aria-labelledby="dialogTitle">
+  <div class="cx-modal-content">
+    <div class="cx-dialog-header modal-header">
+      <div id="dialogTitle" class="cx-dialog-title modal-title">
+        {{ data.title || 'Notice' }}
+      </div>
+      <button type="button" class="close" title="Close" aria-label="Close" (click)="dismissModal('close')">
+        <span aria-hidden="true">
+          <cx-icon type="CLOSE"></cx-icon>
+        </span>
+      </button>
+    </div>
+
+    <div class="cx-dialog-body modal-body">
+      <div class="cx-dialog-row">
+        <div class="cx-dialog-item col-sm-12">
+          <p>{{ data.message || '' }}</p>
+        </div>
+        <div class="cx-dialog-actions col-sm-12">
+          <div class="cx-dialog-buttons">
+            <button *ngIf="data.secondaryAction" class="btn btn-secondary" (click)="runAction(data.secondaryAction)">
+              {{ data.secondaryAction.label }}
+            </button>
+            <button class="btn btn-primary" (click)="runAction(data.primaryAction)" autofocus>
+              {{ data.primaryAction?.label || 'OK' }}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

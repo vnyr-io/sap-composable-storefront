@@ -4,9 +4,6 @@ import { EsProductRefinementsModule } from './es-product-refinements/es-product-
 
 @NgModule({
   declarations: [],
-  imports: [
-    EsProductListModule,
-    EsProductRefinementsModule,
-  ],
+  imports: [EsProductListModule, EsProductRefinementsModule],
 })
 export class EsProductListingModule {}

@@ -1,5 +1,36 @@
-@import "../../styles-config";
-@import "@spartacus/cart";
-@import "@spartacus/styles/vendor/bootstrap/scss/functions";
-@import "@spartacus/styles/vendor/bootstrap/scss/variables";
-@import "@spartacus/styles/vendor/bootstrap/scss/_mixins";
+@import '../../styles-config';
+@import '@spartacus/cart';
+@import '@spartacus/styles/vendor/bootstrap/scss/functions';
+@import '@spartacus/styles/vendor/bootstrap/scss/variables';
+@import '@spartacus/styles/vendor/bootstrap/scss/_mixins';
+
+app-es-cart-dialog {
+  @extend %cx-added-to-cart-dialog !optional;
+}
+
+app-es-cart-item {
+  @extend %cx-cart-item !optional;
+}
+
+app-es-cart-item-validation-warning {
+  @extend %cx-cart-item-validation-warning !optional;
+}
+
+app-es-promotions {
+  .cx-promotions {
+    @include type('7');
+    color: var(--cx-color-success);
+    padding: 0.5rem 0;
+  }
+
+  .cx-promotions ul {
+    padding: 0;
+  }
+
+  .cx-promotions p,
+  .cx-promotions ul > li {
+    list-style-type: none;
+    line-height: 1.6;
+    font-weight: 700;
+  }
+}
